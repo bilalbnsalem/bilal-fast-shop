@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>the-B-Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="app.js"></script>
+</head>
+<body>
+
+<header>the-B-Store</header>
+
+<div class="products" id="products"></div>
+
+<script>
+const phone="21694622377"; // مربوط بواتساب
+
+function render(){
+  const box=document.getElementById("products");
+  box.innerHTML="";
+
+  products.forEach(p=>{
+    box.innerHTML+=`
+      <div class="card">
+        <img src="${p.img}">
+        <h3>${p.name}</h3>
+        <p>${p.price} DT</p>
+        <button onclick="order('${p.name}', '${p.price}')">
+          اطلب عبر واتساب
+        </button>
+      </div>
+    `;
+  });
+}
+
+function order(name,price){
+  const msg=`مرحبا the-B-Store
+أريد طلب المنتج:
+${name}
+السعر: ${price} DT
+الدفع عند الاستلام`;
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`);
+}
+
+render();
+</script>
+
+</body>
+</html>
